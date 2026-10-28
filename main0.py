@@ -1,6 +1,6 @@
 # from groq import Groq
 
-# client = Groq(api_key='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')
+# client = Groq(api_key='')
 
 # pergunta = input('Faça uma pergunta: ')
 # resposta = client.chat.completions.create(
