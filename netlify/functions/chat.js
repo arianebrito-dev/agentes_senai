@@ -25,7 +25,7 @@ exports.handler = async function(event, context) {
     const client = new Groq({ apiKey });
 
     const resposta = await client.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: pergunta }
