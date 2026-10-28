@@ -1,7 +1,6 @@
+const { Groq } = require('groq-sdk');
 
-import { Groq } from 'groq-sdk';
-
-export default async function handler(event, context) {
+exports.handler = async function(event, context) {
   // Garante que a requisição seja POST
   if (event.httpMethod !== 'POST') {
     return {
@@ -19,14 +18,14 @@ export default async function handler(event, context) {
     if (!apiKey) {
       return {
         statusCode: 500,
-        body: JSON.stringify({ error: 'Chave de API do Groq não configurada no servidor.' }),
+        body: JSON.stringify({ error: 'Chave de API do Groq não configurada no servidor (GROQ_API_KEY).' }),
       };
     }
 
     const client = new Groq({ apiKey });
 
     const resposta = await client.chat.completions.create({
-      model: 'openai/gpt-oss-120b',
+      model: 'llama-3.3-70b-versatile',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: pergunta }
